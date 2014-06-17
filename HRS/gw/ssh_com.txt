@@ -1,0 +1,13 @@
+bash stata_rawtosas.sh
+bash sas_gw_mp.sh
+
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh
+
+bqueues

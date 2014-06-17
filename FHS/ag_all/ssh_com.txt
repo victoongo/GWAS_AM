@@ -1,0 +1,19 @@
+snplst.do
+
+bash st_res.sh
+
+bsub -q hour -M 8 -o mergebs.log sas merge.sas
+
+bash sas_ag100.sh
+bash sas_agrul100.sh
+
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh
+
+bqueues

@@ -1,0 +1,15 @@
+win 7
+snplst.do
+
+KD
+bsub -q day -o rp3498_gen5000bs.log sas rp3498_gen5000.sas -log rp3498_gen5000_sas.log -logparm open=replace
+bash st_extrec.sh
+bash sas_rp.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh

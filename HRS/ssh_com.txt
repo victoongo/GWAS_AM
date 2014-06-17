@@ -1,0 +1,17 @@
+bsub -q day -M 15 -o hrs_0_step_stata.log stata -b do p_stata_0_step.do
+
+
+bash stata_rawtosas.sh
+bash sas_gw_mp.sh
+bash sas_gw_sp.sh
+bash sas_gw_pc.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh
+
+bqueues

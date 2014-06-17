@@ -1,0 +1,5 @@
+plink --bfile 50k --extract 50kb37ss.txt --make-bed --out 50kt
+plink --bfile 500k --extract 500kb37ss.txt --make-bed --out 500kt
+
+plink --bfile 50kt --update-map 50kb37.txt --make-bed --out ..\qc\50k
+plink --bfile 500kt --update-map 500kb37.txt --make-bed --out ..\qc\500k

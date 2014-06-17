@@ -1,0 +1,16 @@
+win 7
+pair.sas
+snplst.do
+
+KD
+bash pl_extr.sh
+bash pl_reca.sh
+bash sas_rp.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh

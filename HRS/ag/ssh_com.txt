@@ -1,0 +1,21 @@
+p_hrs_stata_2nd_step.do
+pairs.sas
+snplst.do
+
+bash st_res.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+bash sas_ag100.sh
+bash sas_agrul100.sh
+bash sas_madpa.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+
+rm *.bim
+rm *.bed
+rm *.fam
+rm *.txt
+rm *.hh
+
+bqueues
