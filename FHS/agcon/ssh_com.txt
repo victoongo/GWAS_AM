@@ -1,0 +1,45 @@
+bash pl_extr.sh
+bash pl_reca.sh
+bash st_agconmr.sh
+bsub -q hour -o mergebsmad.log sas merge_mad.sas
+bsub -q hour -o mergebsres.log sas merge_res.sas
+bsub -q hour -o snplst6.log sas snplst6.sas
+
+bsub -q day stata -b do agconpairsall.do
+
+bash sas_agconrul.sh
+bash sas_testrun.sh
+
+bash sas_agmrp.sh
+
+
+*** a test all 6 different ordering
+bash sas_agconmedat.sh
+
+bsub -q hour -o mergebs.log sas merge.sas
+bsub -q hour -o mergebsm.log sas merge_mad.sas
+bsub -q hour -o mergebsr.log sas merge_res.sas
+
+rm snp*.bim
+rm snp*.bed
+rm snp*.fam
+rm snp*.txt
+rm snp*.hh
+
+bqueues
+
+
+***old
+*bsub -q hour stata -b do pairs.do
+bsub -q hour stata -b do agconpairs200.do
+bsub -q hour stata -b do agconpairs200krp.do
+bsub -q hour stata -b do agconpairs989.do
+
+bsub -q day sas agconmadsp.sas
+bsub -q day sas agconmadtrblrp.sas
+
+bash sas_agconmed.sh
+bash sas_agconrul.sh
+
+*** a test 1 of different ordering
+bash sas_agconmed1t.sh
